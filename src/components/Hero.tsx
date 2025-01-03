@@ -1,10 +1,11 @@
-import React from "react";
-import { ArrowRight, ListTodo, PieChart, TrendingUp } from "lucide-react";
-import { motion } from "framer-motion";
+"use client";
+
 import {
   fadeInUp,
   staggerChildren,
 } from "@/utils/helpers/framer-motion-helper";
+import { motion } from "framer-motion";
+import { ArrowRight, ListTodo, PieChart, TrendingUp } from "lucide-react";
 
 const Hero = () => {
   return (

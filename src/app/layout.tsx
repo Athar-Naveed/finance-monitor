@@ -25,12 +25,6 @@ export const metadata: Metadata = {
     "SAAS",
   ],
   authors: [{ name: "ExpenseFlow" }],
-  openGraph: {
-    title: "ExpenseFlow - Smart Expense & Task Management",
-    description:
-      "Streamline your finances and tasks with ExpenseFlow. The all-in-one solution for personal expense tracking and task management.",
-    images: ["/og-image.jpg"],
-  },
 };
 
 export default function RootLayout({

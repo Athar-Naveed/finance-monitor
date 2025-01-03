@@ -3,14 +3,14 @@ import { slideIn } from "@/utils/helpers/framer-motion-helper";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <header
-      className={`fixed w-full z-50 transition-all duration-300 bg-black/90 shadow-lg`}
+      className={`fixed w-full z-50 transition-all duration-300 bg-black shadow-lg`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20">
         <div className="flex items-center justify-between h-full">
@@ -48,12 +48,18 @@ const Navbar = () => {
               Testimonials
             </a>
             <div className="flex items-center space-x-4">
-              <button className="px-6 py-2 text-white bg-neutral-800 hover:text-white/80 transition-colors hover:bg-white/10 rounded-lg">
+              <Link
+                href="/sign-in"
+                className="px-6 py-2 text-white bg-neutral-800 hover:text-white/80 transition-colors hover:bg-white/10 rounded-lg"
+              >
                 Sign In
-              </button>
-              <button className="px-6 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:opacity-90 transition-all transform hover:scale-105 hover:shadow-lg">
+              </Link>
+              <Link
+                href="/sign-up"
+                className="px-6 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:opacity-90 transition-all transform hover:scale-105 hover:shadow-lg"
+              >
                 Get Started
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -105,13 +111,19 @@ const Navbar = () => {
                   >
                     Testimonials
                   </a>
-                  <div className="pt-2 space-y-4">
-                    <button className="w-full px-6 py-3 bg-neutral-800 text-white hover:bg-white/10 rounded-lg transition-colors text-left">
+                  <div className="pt-2 space-y-4 flex flex-col">
+                    <Link
+                      href="/sign-in"
+                      className="w-full px-6 py-3 bg-neutral-800 text-white hover:bg-white/10 rounded-lg transition-colors text-left"
+                    >
                       Sign In
-                    </button>
-                    <button className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:opacity-90 transition-all">
+                    </Link>
+                    <Link
+                      href="/sign-up"
+                      className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:opacity-90 transition-all"
+                    >
                       Get Started
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 import { fadeInUp } from "@/utils/helpers/framer-motion-helper";
