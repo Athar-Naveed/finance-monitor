@@ -82,7 +82,7 @@ export function Sidebar() {
         </nav>
       </aside>
 
-      {/* Bottom bar for mobile and tablet screens */}
+      {/* Bottom bar for mobile and tablet screens  */}
       <nav className="lg:hidden fixed bottom-0 left-0 right-0 bg-neutral-900 border-t border-white dark:border-slate-700">
         <div className="flex justify-around items-center h-16">
           {sideNavigation.flatMap((section) =>
