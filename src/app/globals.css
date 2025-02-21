@@ -4,6 +4,6 @@
 
 @media (prefers-color-scheme: dark) {
   body {
-    @apply bg-neutral-950 text-white
+    @apply bg-neutral-950 text-white;
   }
 }

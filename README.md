@@ -1,5 +1,6 @@
 # ExpenseFlow
 
+Next we'll set the currency in the store
 
 ## Setting up Project linters
 

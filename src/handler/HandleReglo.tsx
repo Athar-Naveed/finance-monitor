@@ -14,13 +14,13 @@ export const HandleRegister = async (value: RegisterType, route: any) => {
     });
     const dat = await resp.json();
 
-    if (dat.status == 200) {
+    if (resp.status == 200) {
       toast.success(dat.message, {
         duration: 3000,
         position: "top-center",
       });
 
-      route.push(`/user/${dat.username}`);
+      route.push(`/user/${dat.fullName.split(" ")[0].toLowerCase()}`);
     }
   } catch (error: any) {
     toast.error(error.message, {
@@ -41,9 +41,7 @@ export const HandleLogin = async (values: RegisterType, route: any) => {
     });
 
     const dat = await resp.json();
-    console.log(`data: ${JSON.stringify(dat)}`);
-
-    if (dat.status == 200) {
+    if (resp.status == 200) {
       toast.success(dat.message, {
         duration: 3000,
         position: "top-center",
@@ -59,7 +57,7 @@ export const HandleLogin = async (values: RegisterType, route: any) => {
         },
       });
 
-      route.push(`/user/${dat.username}`);
+      route.push(`/user/${dat.fullName.split(" ")[0].toLowerCase()}`);
     }
   } catch (error: any) {
     toast.error(error.message, {

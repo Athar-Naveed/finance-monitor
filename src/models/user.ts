@@ -1,20 +1,21 @@
 import mongoose from "mongoose";
 
 export interface Users extends mongoose.Document {
-  username: string;
+  fullName: string;
   email: string;
   whatsapp: number;
   password: string;
   role: "user" | "admin";
   createdAt: string;
+  updatedAt: string;
 }
 
 const userSchema = new mongoose.Schema<Users>({
-  username: {
+  fullName: {
     type: String,
     required: true,
     minlength: 3,
-    maxlength: 20,
+    maxlength: 25,
   },
   email: {
     type: String,
@@ -37,6 +38,10 @@ const userSchema = new mongoose.Schema<Users>({
     default: "user",
   },
   createdAt: {
+    type: String,
+    default: new Date().toLocaleString().split(",")[0],
+  },
+  updatedAt: {
     type: String,
     default: new Date().toLocaleString().split(",")[0],
   },

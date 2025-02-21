@@ -22,4 +22,14 @@ interface StatType {
   label: string;
 }
 
-export type {RegisterType, FeatureType, StepType, StatType};
+interface SidebarType {
+  isCollapsed: boolean;
+  setIsCollapsed: () => void;
+}
+
+interface StateType {
+  currency: string;
+  setCurrency: (currency: string) => void;
+}
+
+export type {RegisterType, FeatureType, StepType, StatType, SidebarType, StateType};

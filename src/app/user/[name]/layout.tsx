@@ -1,22 +1,19 @@
-import type {Metadata} from "next";
+"use client";
 import "./styles.css";
-
+import {sidebarStore} from "@/store/sidebarStore";
 import {Sidebar} from "./components/Sidebar";
-export const metadata: Metadata = {
-  title: "Project Monitor & Expense Monitor",
-  description:
-    "Project Monitor is an Application to monitor our collaborative ongoing projects, there are 2 roles one is of the project giver and the other who has done the project. You just have to login.",
-};
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
+  const {isCollapsed} = sidebarStore();
+
   return (
-    <html lang="en">
-      <body suppressHydrationWarning={true}>
-        {/* <ReactQueryProvider>*/}
+    <div className="">
+      <div className="flex">
         <Sidebar />
-        {children}
-        {/* </ReactQueryProvider> */}
-      </body>
-    </html>
+        <main className={`${isCollapsed ? "lg:ml-20" : "lg:ml-64"} flex-1 h-screen`}>
+          <div>{children}</div>
+        </main>
+      </div>
+    </div>
   );
 }

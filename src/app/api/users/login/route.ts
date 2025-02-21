@@ -43,20 +43,25 @@ export async function POST(request: NextRequest) {
     cookie.set("jwtToken", token, {
       path: "/",
       maxAge: 60 * 60 * 24 * 7, // 7 days in seconds
-      httpOnly: true,
     });
 
-    return NextResponse.json({
-      message: "Logged In",
-      status: 200,
-      username: user.username,
-    });
+    return NextResponse.json(
+      {
+        message: "Logged In",
+        status: 200,
+        fullName: user.fullName,
+      },
+      {status: 200},
+    );
   } catch (error: any) {
     console.error("Error logging in user:", error.message);
 
-    return NextResponse.json({
-      message: `An error occurred during login: ${error.message}`,
-      status: 500,
-    });
+    return NextResponse.json(
+      {
+        message: `An error occurred during login: ${error.message}`,
+        status: 500,
+      },
+      {status: 500},
+    );
   }
 }

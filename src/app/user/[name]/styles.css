@@ -2,8 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (prefers-color-scheme: dark) {
+@layer components {
   body {
-    @apply bg-neutral-950 text-white;
+    @apply bg-[#121212] text-white;
+  }
+  .box-heading {
+    @apply md:mx-5;
+  }
+  .box-heading h3 {
+    @apply text-xl font-semibold;
+  }
+  .cards {
+    @apply grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:mx-5 gap-4;
+  }
+  .card-heading {
+    @apply text-white;
   }
 }

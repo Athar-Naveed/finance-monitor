@@ -3,7 +3,6 @@ import Features from "./Features";
 import Steps from "./Steps";
 import Stats from "./Stats";
 import Newsletter from "./Newsletter";
-import Footer from "./Footer";
 
 const HomePage = () => {
   return (
@@ -13,7 +12,6 @@ const HomePage = () => {
       <Steps />
       <Stats />
       <Newsletter />
-      <Footer />
     </>
   );
 };

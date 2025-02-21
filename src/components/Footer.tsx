@@ -1,6 +1,10 @@
+"use client";
+import {usePathname} from "next/navigation";
 import Link from "next/link";
 
 const Footer = () => {
+  const path = usePathname();
+  if (path.includes("/user")) return null;
   return (
     <footer className="bg-black border-t border-neutral-800 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

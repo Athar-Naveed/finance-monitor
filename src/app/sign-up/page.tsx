@@ -3,17 +3,17 @@
 import {useState} from "react";
 import {motion} from "framer-motion";
 import {fadeInUp} from "@/utils/helpers/framer-motion-helper";
-import {Eye, EyeOff, Mail, Lock, User} from "lucide-react";
-import Head from "next/head";
+import {Eye, EyeOff, Mail, Lock, User, Phone} from "lucide-react";
 import Link from "next/link";
 import {Formik, Form, Field} from "formik";
 import * as Yup from "yup";
-
+import {HandleRegister} from "@/handler/HandleReglo";
+import {useRouter} from "next/navigation";
 const validationSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, "Name is too short")
-    .max(50, "Name is too long")
-    .required("Name is required"),
+  fullName: Yup.string()
+    .min(2, "Full Name is too short")
+    .max(50, "Full Name is too long")
+    .required("Full Name is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string()
     .min(8, "Password must be at least 8 characters")
@@ -25,20 +25,22 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function SignUp() {
+  const route = useRouter();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (
     values: {
-      name: string;
+      fullName: string;
       email: string;
       password: string;
+      whatsapp: number;
     },
     {setSubmitting}: {setSubmitting: (isSubmitting: boolean) => void},
   ) => {
     try {
-      // Add registration logic here
-      console.log(values);
-    } catch (error) {
+      setSubmitting(true);
+      await HandleRegister(values, route);
+    } catch (error: any) {
       console.error(error);
     } finally {
       setSubmitting(false);
@@ -47,14 +49,6 @@ export default function SignUp() {
 
   return (
     <>
-      <Head>
-        <title>Sign Up | ExpenseFlow</title>
-        <meta
-          name="description"
-          content="Create your ExpenseFlow account to start managing your finances and tasks effectively"
-        />
-      </Head>
-
       <div className="min-h-screen bg-gradient-to-b from-black via-purple-900/20 to-black flex items-center justify-center px-4">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
 
@@ -73,7 +67,7 @@ export default function SignUp() {
             </div>
 
             <Formik
-              initialValues={{name: "", email: "", password: ""}}
+              initialValues={{fullName: "", email: "", password: "", whatsapp: 0}}
               validationSchema={validationSchema}
               onSubmit={handleSubmit}
             >
@@ -87,18 +81,18 @@ export default function SignUp() {
                       <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-neutral-500" />
                       <Field
                         type="text"
-                        name="name"
+                        name="fullName"
                         className="w-full bg-black/50 border border-neutral-800 rounded-lg py-2 pl-10 pr-4 text-white placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                        placeholder="Enter your name"
+                        placeholder="Enter your full name"
                       />
                     </div>
-                    {errors.name && touched.name && (
+                    {errors.fullName && touched.fullName && (
                       <motion.p
                         initial={{opacity: 0, y: -10}}
                         animate={{opacity: 1, y: 0}}
                         className="text-red-400 text-sm mt-1"
                       >
-                        {errors.name}
+                        {errors.fullName}
                       </motion.p>
                     )}
                   </div>
@@ -156,6 +150,29 @@ export default function SignUp() {
                         className="text-red-400 text-sm mt-1"
                       >
                         {errors.password}
+                      </motion.p>
+                    )}
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-neutral-200 mb-2">
+                      WhatsApp
+                    </label>
+                    <div className="relative">
+                      <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-neutral-500" />
+                      <Field
+                        type={"number"}
+                        name="whatsapp"
+                        className="w-full bg-black/50 border border-neutral-800 rounded-lg py-2 pl-10 pr-12 text-white placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        placeholder="Your whatsapp number"
+                      />
+                    </div>
+                    {errors.whatsapp && touched.whatsapp && (
+                      <motion.p
+                        initial={{opacity: 0, y: -10}}
+                        animate={{opacity: 1, y: 0}}
+                        className="text-red-400 text-sm mt-1"
+                      >
+                        {errors.whatsapp}
                       </motion.p>
                     )}
                   </div>
