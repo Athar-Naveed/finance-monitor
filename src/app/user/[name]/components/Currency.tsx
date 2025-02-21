@@ -30,13 +30,13 @@ const CurrencySelector = () => {
   };
 
   return (
-    <div className="flex justify-center w-full max-w-xs bg-transparent m-5">
+    <div className="relative w-full max-w-xs bg-transparent m-5">
       {/* Dropdown Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-4 py-2 text-left bg-transparent text-gray-200 placeholder:text-gray-200 border rounded-lg shadow-sm flex items-center justify-between"
+        className="w-full px-4 py-2 text-left bg-transparent border rounded-lg shadow-sm flex items-center justify-between"
       >
-        <span className="text-gray-700">Select Currency</span>
+        <span className="text-gray-200">Select Currency</span>
         <ChevronDown className="w-4 h-4 text-gray-500" />
       </button>
 
